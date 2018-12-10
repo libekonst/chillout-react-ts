@@ -10,8 +10,7 @@ export namespace RadioTypes {
     label: string;
   }
 
-  export interface Signed extends Primitive {
-    label: string;
+  export interface Signed extends Labelled {
     id: number;
   }
 }
