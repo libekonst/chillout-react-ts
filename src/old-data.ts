@@ -1,6 +1,6 @@
-import { IPrimitiveRadioData } from './IRadioData';
+import { RadioTypes } from './types';
 
-export const radios: { music: IPrimitiveRadioData[]; news: IPrimitiveRadioData[] } = {
+export const radios: { music: RadioTypes.Primitive[]; news: RadioTypes.Primitive[] } = {
   music: [
     {
       id: 'offradio',
