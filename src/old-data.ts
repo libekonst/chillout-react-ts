@@ -1,16 +1,6 @@
-export declare interface ITypelessRadioObject {
-  id: string;
-  name: string;
-  source: string;
-  img: string;
-}
+import { IPrimitiveRadioData } from './IRadioData';
 
-export declare interface IRadioData {
-  music: ITypelessRadioObject[];
-  news: ITypelessRadioObject[];
-}
-
-export const radios: IRadioData = {
+export const radios: { music: IPrimitiveRadioData[]; news: IPrimitiveRadioData[] } = {
   music: [
     {
       id: 'offradio',
