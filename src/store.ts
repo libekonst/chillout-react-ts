@@ -1,11 +1,16 @@
 import { radios } from './old-data';
+import { ISignedRadioData, IPrimitiveRadioData, ILabelledRadioData } from './IRadioData';
 
-const getDataWithType = (arr: object[], category: string): object[] =>
-  arr.map(obj => ({ ...obj, type: category }));
+const sign = (obj: object, i: number) => ({ ...obj, id: i } as ISignedRadioData);
 
-const formattedData = Object.keys(radios)
-  .map(key => getDataWithType(radios[key], key))
-  .reduce((sum, step) => [...sum, ...step])
-  .map((obj, i) => ({ ...obj, id: i }));
+const mergeArrays = (sum: any[], step: any[]) => [...sum, ...step];
 
-export default formattedData;
+const getDataWithLabel = (arr: IPrimitiveRadioData[], label: string) =>
+  arr.map(obj => ({ ...obj, label: label }));
+
+const preparedData: ISignedRadioData[] = Object.keys(radios)
+  .map(key => getDataWithLabel(radios[key], key))
+  .reduce(mergeArrays)
+  .map(sign);
+
+export default preparedData;
