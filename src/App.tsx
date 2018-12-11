@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
-import pink from '@material-ui/core/colors/pink';
 import './App.css';
-import { CssBaseline } from '@material-ui/core';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: indigo,
-    secondary: pink,
-    type: 'light',
-  },
-  typography: {
-    useNextVariants: true,
-},
-});
+import { RadioCard } from './components/RadioCard';
+import { withRoot } from './withRoot';
+import store from './store';
 
 class App extends Component {
-  public render() {
+  render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <div />;
-      </MuiThemeProvider>
+      <div style={{ padding: 20, display: 'flex', }}>
+        {store.map(radio => (
+          <div style={{padding: 10}}>
+          <RadioCard
+            source={radio.source}
+            key={radio.id}
+            img={radio.img}
+            name={radio.name}
+          />
+          </div>
+        ))}
+      </div>
     );
   }
 }
 
-export default App;
+export default withRoot(App);

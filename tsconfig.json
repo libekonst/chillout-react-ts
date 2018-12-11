@@ -14,9 +14,15 @@
     "noEmit": true,
     "jsx": "preserve",
     "noImplicitAny": false,
+    "lib": ["es6", "dom"]
     // "suppressImplicitAnyIndexErrors": true,
   },
-  "include": [
-    "src"
-  ]
+  "paths": {
+    "@material-ui/core": ["./material-ui/src"],
+    "@material-ui/core/*": ["./material-ui/src/*"],
+    "@material-ui/lab": ["./material-ui-lab/src"],
+    "@material-ui/lab/*": ["./material-ui-lab/src/*"]
+  },
+  "baseUrl": "./packages",
+  "include": ["src"]
 }
