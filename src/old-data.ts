@@ -142,7 +142,8 @@ export const radios: { music: RadioTypes.Primitive[]; news: RadioTypes.Primitive
       id: 'athensdj',
       name: 'Athens DJ 95.2',
       source: 'http://netradio.live24.gr/athensdeejay',
-      image: 'http://www.athensdeejay.gr/Content/assets/logos-icons/station-logo-beta.svg',
+      image:
+        'http://www.athensdeejay.gr/Content/assets/logos-icons/station-logo-beta.svg',
     },
     {
       id: 'love',
