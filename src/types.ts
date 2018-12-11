@@ -1,9 +1,9 @@
 export namespace RadioTypes {
   export interface Primitive {
-    id: string | number;
+    id?: string | number;
     name: string;
     source: string;
-    img: string;
+    image: string;
   }
 
   export interface Labelled extends Primitive {
