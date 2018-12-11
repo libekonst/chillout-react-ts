@@ -25,7 +25,7 @@ export class RadioCard extends Component<RadioTypes.Labelled, State> {
           flexDirection: 'column',
         }}
       >
-        <CardActionArea /* style={{ height: 200 }} */>
+        <CardActionArea  /* style={{ height: 200 }} */>
           <div
             // src={image}
             title={name}
