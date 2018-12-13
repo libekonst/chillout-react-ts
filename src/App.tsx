@@ -1,34 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
-import { RadioCard } from './components/RadioCard';
+import RadioCard from './components/RadioCard';
 import { withRoot } from './withRoot';
 import store from './store';
-import {
-  GridList,
-  GridListTile,
-  GridListTileBar,
-  IconButton,
-  Grid,
-  AppBar,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 class App extends Component {
   render() {
     return (
-      <>
-        {/* // <div
-      //   style={{
-      //     padding: 20,
-      //     display: 'flex',
-      //     flexWrap: 'wrap',
-      //     flexDirection: 'row',
-      //     justifyContent: 'spaceAround',
-      //     alignItems: 'center',
-      //   }}
-      // > */}
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignContent: 'center',
+          alignItems: 'flexStart',
+        }}
+      >
         <AppBar position="sticky">
           <Toolbar>
             <Typography
@@ -40,19 +29,18 @@ class App extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Grid container spacing={16} justify="space-around">
-          {store.map(radio => (
-            <Grid item xs key={radio.id}>
-              <RadioCard
-                source={radio.source}
-                image={radio.image}
-                name={radio.name}
-                label={radio.label}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </>
+        {store.map(radio => (
+          <div style={{ padding: 4 }}>
+            <RadioCard
+              key={radio.id}
+              source={radio.source}
+              image={radio.image}
+              name={radio.name}
+              label={radio.label}
+            />
+          </div>
+        ))}
+      </div>
     );
   }
 }
