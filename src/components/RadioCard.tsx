@@ -20,6 +20,14 @@ const styles = createStyles({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  imageStyles: {
+    height: 225,
+    width: 'auto',
+    backgroundSize: 'cover',
+    display: 'block',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+  },
 });
 class RadioCard extends React.Component<Props, State> {
   state = {
@@ -43,7 +51,6 @@ class RadioCard extends React.Component<Props, State> {
           width: 225,
           display: 'flex',
           flexDirection: 'column',
-
         }}
         onMouseEnter={this.handleHover}
         onMouseLeave={this.handleHover}
@@ -56,17 +63,20 @@ class RadioCard extends React.Component<Props, State> {
             title={name}
             style={{
               backgroundImage: `url(${image})`,
-              height: 225,
-              width: 'auto',
-              backgroundSize: 'cover',
-              display: 'block',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
             }}
+            className={classes.imageStyles}
           />
         </CardActionArea>
         <div className={classes.cardContent}>
-          <Typography variant="body1" style={{ padding: 12 }}>
+          <Typography
+            variant="body1"
+            style={{
+              padding: 12,
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+            }}
+          >
             {name}
           </Typography>
           <IconButton aria-label="Add to favorites" onClick={this.addFavorite}>
