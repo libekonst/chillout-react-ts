@@ -4,6 +4,7 @@ import { CardActionArea, Typography, IconButton, createStyles } from '@material-
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { RadioTypes } from '../types';
+import RadioImage from './RadioImage';
 interface State {
   favorited: boolean;
   hovered: boolean;
@@ -11,22 +12,28 @@ interface State {
 }
 
 interface Props extends RadioTypes.Labelled, WithStyles<typeof styles> {
-  style?: React.CSSProperties;
+  // style?: React.CSSProperties;
 }
 const styles = createStyles({
+  card: {
+    // maxWidth: 200,
+    // minWidth: 200,
+    width: 225,
+    display: 'flex',
+    flexDirection: 'column',
+  },
   cardContent: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  imageStyles: {
-    height: 225,
-    width: 'auto',
-    backgroundSize: 'cover',
-    display: 'block',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+
+  cardText: {
+    padding: 12,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   },
 });
 class RadioCard extends React.Component<Props, State> {
@@ -45,40 +52,17 @@ class RadioCard extends React.Component<Props, State> {
     const { classes, image, name } = this.props;
     return (
       <Card
-        style={{
-          // maxWidth: 200,
-          // minWidth: 200,
-          width: 225,
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+        className={classes.card}
         onMouseEnter={this.handleHover}
         onMouseLeave={this.handleHover}
-        elevation={this.state.hovered ? 8 : this.state.selected ? 15 : 2}
-        // raised={this.state.selected || this.state.hovered}
+        // elevation={this.state.hovered ? 8 : this.state.selected ? 15 : 2}
+        raised={this.state.selected || this.state.hovered}
       >
-        <CardActionArea /* style={{ height: 200 }} */ onClick={this.handleSelect}>
-          <div
-            // src={image}
-            title={name}
-            style={{
-              backgroundImage: `url(${image})`,
-            }}
-            className={classes.imageStyles}
-          />
+        <CardActionArea onClick={this.handleSelect}>
+          <RadioImage title={name} image={image} />
         </CardActionArea>
         <div className={classes.cardContent}>
-          <Typography
-            variant="body1"
-            style={{
-              padding: 12,
-              textOverflow: 'ellipsis',
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {name}
-          </Typography>
+          <Typography variant="body1" className={classes.cardText} children={name} />
           <IconButton aria-label="Add to favorites" onClick={this.addFavorite}>
             <FavoriteIcon color={this.state.favorited ? 'secondary' : undefined} />
           </IconButton>

@@ -1,4 +1,4 @@
-import { radios } from './old-data';
+import { radios } from './data-old';
 import { RadioTypes } from './types';
 
 const withLabel = (arr: RadioTypes.Primitive[], label: string): RadioTypes.Labelled[] =>
